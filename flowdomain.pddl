@@ -36,7 +36,7 @@
 (:action move
     :parameters (?l1  ?l2 - location ?c - color)
     :precondition (and (flow-at ?l1 ?c) (empty ?l2) (adjacent ?l1 ?l2)) 
-    :effect (and (not (flow-at ?l1)) (not (empty ?l2)) (flow-at ?l2) (not-empty ?l2) (color-at ?l2 ?c))
+    :effect (and (not (flow-at ?l1 ?c)) (not (empty ?l2)) (flow-at ?l2 ?c) (not-empty ?l2) (color-at ?l2 ?c))
 )
 
 ;start the flow of color c
@@ -48,7 +48,7 @@
 
 (:action finish
     :parameters (?l1  ?l2 - location ?c - color)
-    :precondition (and (flow-at ?l1 ?c) (flow-end ?l2 ?c) (adjacent ?l1 ?l2)) 
+    :precondition (and (flow-at ?l1 ?c) (empty ?l2) (flow-end ?l2 ?c) (adjacent ?l1 ?l2)) 
     :effect (and (not (flow-at ?l1 ?c)) (not (empty ?l2)) (not-empty ?l2) (offboard) (color-at ?l2 ?c) (flow-complete ?c))
 )
 )

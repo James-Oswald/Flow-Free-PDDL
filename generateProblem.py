@@ -52,3 +52,17 @@ if __name__ == "__main__":
             "yellow": ((3,3), (4,0)),
             "orange": ((3,4), (4,1)),
         }))
+
+    with open("flowproblem1.pddl", "w") as file:
+        file.write(problemGen(3, 1, {
+            "red": ((0,0), (2, 0)),
+        }))
+
+    with open("flowproblemG.pddl", "w") as file:
+        file.write(problemGen(15, 18, {
+            "yellow": ((0,1), (7, 17)),
+            "cyan": ((2,2), (7, 9)),
+            "rust": ((4,1), (13, 14)),
+            "green": ((0,9), (12,5)),
+            "pink": ((0,9), (12,5))
+        }))
