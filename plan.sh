@@ -1,1 +1,1 @@
-python3 ./kstar/fast-downward.py $@ --symmetries "sym=structural_symmetries(time_bound=0,search_symmetries=oss,stabilize_initial_state=false,keep_operator_symmetries=true)" --search "kstar(lmcut(), k=100, symmetries=sym)"
+python3 ./kstar/fast-downward.py $@ --search "kstar(lmcut(), k=1)"

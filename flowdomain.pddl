@@ -2,16 +2,12 @@
 
 (define (domain flow_free)
 
-;remove requirements that are not needed
 (:requirements :strips :typing)
 
 (:types
     color
     location
 )
-
-; un-comment following line if constants are needed
-;(:constants )
 
 (:predicates
     ;The finger is off the board, we can begin any flow

@@ -21,8 +21,12 @@
 )
 
 (:goal (and
-    (forall (?c - color) (flow-complete ?c))
-    (forall (?l - location) (not-empty ?l))
+    ;(forall (?c - color) (flow-complete ?c))
+    ;(forall (?l - location) (not-empty ?l))
+    (flow-complete red)
+    (not-empty p_0_0)
+	(not-empty p_1_0)
+	(not-empty p_2_0)
 ))
 
 )

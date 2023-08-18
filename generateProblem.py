@@ -37,8 +37,10 @@ def problemGen(n : int, m : int, flows: dict[str, tuple[tuple[int, int], tuple[i
 )
 
 (:goal (and
-    (forall (?c - color) (flow-complete ?c))
-    (forall (?l - location) (not-empty ?l))
+    ;(forall (?c - color) (flow-complete ?c))
+    ;(forall (?l - location) (not-empty ?l))
+    {nl.join(f"(flow-complete {c})" for c in colors)}
+    {nl.join(f"(not-empty {p})" for p in points)}
 ))
 
 )'''
