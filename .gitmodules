@@ -1,6 +1,8 @@
 [submodule "kstar"]
 	path = kstar
 	url = https://github.com/IBM/kstar.git
+	ignore = all
 [submodule "VAL"]
 	path = VAL
 	url = https://github.com/KCL-Planning/VAL.git
+	ignore = all

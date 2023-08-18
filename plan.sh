@@ -1,1 +1,1 @@
-/home/jamesoswald/Desktop/NL2P2DL/venv/lib64/python3.11/site-packages/kstar_planner/builds/release/bin/downward $1 $2 $3 $4
+python3 ./kstar/fast-downward.py $@ --symmetries "sym=structural_symmetries(time_bound=0,search_symmetries=oss,stabilize_initial_state=false,keep_operator_symmetries=true)" --search "kstar(lmcut(), k=100, symmetries=sym)"
