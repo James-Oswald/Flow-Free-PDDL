@@ -1,7 +1,14 @@
 {
     "cSpell.words": [
+        "cmap",
+        "cnts",
         "flowproblem",
         "forall",
-        "offboard"
+        "imread",
+        "imshow",
+        "matplotlib",
+        "offboard",
+        "OTSU",
+        "pyplot"
     ]
 }
