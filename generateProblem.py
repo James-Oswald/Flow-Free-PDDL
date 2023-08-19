@@ -37,6 +37,8 @@ def problemGen(n : int, m : int, flows: dict[str, tuple[tuple[int, int], tuple[i
 )
 
 (:goal (and
+    ;We avoid using forall due to the translator implementation generating axioms which 
+    ;make it so we can't use many good planner heuristics.
     ;(forall (?c - color) (flow-complete ?c))
     ;(forall (?l - location) (not-empty ?l))
     {nl.join(f"(flow-complete {c})" for c in colors)}
@@ -45,8 +47,10 @@ def problemGen(n : int, m : int, flows: dict[str, tuple[tuple[int, int], tuple[i
 
 )'''
 
-def genProblemFile(n : int, m : int, flows: dict[str, tuple[tuple[int, int], tuple[int, int]]]):
-    with open(f"flowproblem{n}x{m}.pddl", "w") as file:
+def genProblemFile(n : int, m : int, flows: dict[str, tuple[tuple[int, int], tuple[int, int]]], name=None):
+    if name == None:
+        name = f"flowproblem{n}x{m}.pddl"
+    with open(name, "w") as file:
         file.write(problemGen(n, m, flows))
 
 #Some hand coded problems
