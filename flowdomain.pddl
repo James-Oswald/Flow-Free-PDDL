@@ -42,9 +42,11 @@
     :effect (and (not (offboard)) (not (empty ?l)) (not-empty ?l) (flow-at ?l ?c) (color-at ?l ?c))
 )
 
+;end the flow of color c
 (:action finish
     :parameters (?l1  ?l2 - location ?c - color)
     :precondition (and (flow-at ?l1 ?c) (empty ?l2) (flow-end ?l2 ?c) (adjacent ?l1 ?l2)) 
     :effect (and (not (flow-at ?l1 ?c)) (not (empty ?l2)) (not-empty ?l2) (offboard) (color-at ?l2 ?c) (flow-complete ?c))
 )
+
 )
