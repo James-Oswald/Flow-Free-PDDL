@@ -10,13 +10,7 @@ import argparse
 import cv2
 import numpy as np
 
-def _percentDif(a : int, b : int):
-    """
-    Return the % difference between two numbers a and b
-    """
-    if b + a == 0:
-        return 0
-    return 100 * (abs(a - b) / ((a + b) / 2))
+from utils import percentDif, absoluteFilePaths
 
 def _sortContours(contours, method="left-to-right"):
     """
@@ -105,11 +99,11 @@ def extractProblem(img_path : str) -> list[list[tuple[int, int, int]]]:
         # Returns the location and width,height for every contour
         x, y, w, h = bbox
         #An elevation change of more than ROW_ERR likely means we're on a new row
-        if _percentDif(y, last_y) > ROW_ERR:
+        if percentDif(y, last_y) > ROW_ERR:
             cell_imgs.append(cur_row.copy())
             cur_row = []
         #if the width and height of the box are within BOX_ERR of each other (its a square)
-        if _percentDif(w, h) < BOX_ERR:
+        if percentDif(w, h) < BOX_ERR:
             cell_img = img_rgb[y:y+h, x:x+w]
             cell_img_g = cv2.cvtColor(cell_img, cv2.COLOR_BGR2GRAY)
             circles = cv2.HoughCircles(cell_img_g, cv2.HOUGH_GRADIENT, 1, cell_img_g.shape[0]/2)
@@ -136,19 +130,10 @@ def extractProblemToJson(img_path : str, json_path : str) -> None:
         problem_repr = extractProblem(img_path)
         json.dump(problem_repr, json_file, indent=4)
 
-def absoluteFilePaths(directory):
-    """
-    From https://stackoverflow.com/a/9816863/6342516
-    """
-    for dirpath,_,filenames in os.walk(directory):
-        for f in filenames:
-            yield os.path.abspath(os.path.join(dirpath, f))
-
-#If running as a script, we expect to be run from the root dir
 if __name__=="__main__":
-    for img_file in absoluteFilePaths("problems/problem-images"):
+    for img_file in absoluteFilePaths("problem-images"):
         try:
-            json_path = "problems/problem-image-json/" + img_file.split("/")[-1].split(".")[0] + ".json"
+            json_path = "problem-image-json/" + img_file.split("/")[-1].split(".")[0] + ".json"
             extractProblemToJson(img_file, json_path)
         except Exception as e:
             print(str(e))

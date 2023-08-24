@@ -17,6 +17,12 @@ This solver isn't great at the moment, check out these optimized solvers
 We use a lightly modified modified version of 
 [KananVyas/BoxDetection](https://github.com/KananVyas/BoxDetection)
 procedure to segment the game board. We check for the presence of a circle using 
-HoughCircles  
+HoughCircles and grab the circle color from the center pixel.
 
+## Problem Viewer
+
+A Small JS app embedded in an HTML file can be found at `problems/visualizeProblem.html` to display the
+JS formatted problems.
+
+## 
 
